@@ -29,7 +29,7 @@
             var jsonData = JSON.stringify(data);
 
             // Send a POST request to GitHub API to create a new file with the username data
-            fetch('https://github.com/KooKooooo/Form/blob/main/usernames.json', {
+            fetch('https://api.github.com/repos/KooKooooo/Form/contents/usernames.json', {
                 method: 'PUT',
                 headers: {
                     'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
