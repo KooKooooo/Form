@@ -20,21 +20,24 @@
             storeUsername(username);
         });
 
+
         function storeUsername(username) {
             var data = {
                 "username": username
             };
-
+        
             // Convert data to JSON format
             var jsonData = JSON.stringify(data);
-
+        
+            // Construct headers object with Authorization header
+            var headers = new Headers();
+            headers.append('Authorization', 'Bearer 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');
+            headers.append('Content-Type', 'application/json');
+        
             // Send a POST request to GitHub API to create a new file with the username data
-            fetch('https://api.github.com/repos/KooKooooo/Form/contents/usernames.json', {
+            fetch('api.github.com/repos/KooKooooo/Form/contents/usernames.json', {
                 method: 'PUT',
-                headers: {
-                    'Authorization': 'Bearer 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',
-                    'Content-Type': 'application/json'
-                },
+                headers: headers, // Include the headers object
                 body: jsonData
             })
             .then(response => {
@@ -48,6 +51,8 @@
                 console.error('Error:', error);
                 alert('Failed to store username. Please try again later.');
             });
+        }
+        
         }
     </script>
 </body>
